@@ -27,7 +27,7 @@ router.post("/", authenticate, authorise(["admin", "seller"]), upload.single("im
             name : req.body.name,
             price : req.body.price,
             image : req.file.path,
-            executive : req.body.executive
+            executive : req.user.user._id
         });
         res.status(201).send({product});
     } catch(e) {
